@@ -1,0 +1,14 @@
+<!--pages/my/contentMe/contentMe.wxml-->
+<view class="container">
+      <view class="contentMe" wx:for="{{contentMe}}" wx:key="{{contentMe}}">
+          <!--写给那本书  -->
+          <view class="toBook">To:{{lessThan}}{{item.book_name}}{{moreThan}}</view>
+          <!--评论内容  -->
+          <view class="classname">{{item.content}}</view>
+          <!--时间和点赞  -->
+          <view class="timeZan">
+              <view class="time">{{item.time}}</view>
+              <view class="zan">被{{item.num}}人点赞</view>
+          </view>
+      </view>
+</view>

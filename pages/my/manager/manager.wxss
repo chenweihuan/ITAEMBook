@@ -1,0 +1,88 @@
+/* pages/my/manager/manager.wxss */
+/*欢迎您*/
+.top_top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.top_top_welcome{
+    text-decoration: underline;
+}
+.container{
+    padding:30rpx;
+}
+.erweima_text,.btn_two_text,.top_text{
+    text-indent:2em;
+    margin-top:30rpx;
+
+}
+.erweima_text,.btn_two_text{
+   margin-bottom:10rpx;
+    font-size:36rpx;
+    color:#666;
+    margin-top:60rpx;
+
+}
+.top_text{
+
+}
+.btn_two,.erweima{
+    background:#2aac5e;
+    padding:3%;
+    text-align:center;
+    border-radius:20rpx;
+    color:#fff;
+
+}
+
+/*头部*/
+.top{
+    display: flex;
+    flex-direction: row;
+    padding:10rpx;
+}
+.book_name{
+    color: #000;
+    font-size:40rpx;
+    text-align: center;
+}
+.book_small{
+    font-size:30rpx;
+}
+
+.top_right{
+    padding-left:40rpx;
+    width: 150%;
+}
+/*管理员录入馆藏时间*/
+.input_username{
+    line-height:40rpx;
+    height:50rpx;
+    padding-top:20rpx;
+    padding-bottom:15rpx;
+    background:#fff;
+    border-radius:20rpx;
+    width:90%;
+    padding-left:30rpx;
+}
+
+/*退出登录*/
+.user{
+    display:block;
+    background:#2aac5e;
+    padding:20rpx;
+    margin:170rpx auto;
+    width: 50%;
+    text-align:center;
+    border-radius:20rpx;
+
+}
+
+/*管理员确定录入图书*/
+.yes{
+    display: block;
+    background: #2aac5e;
+    padding: 20rpx;
+    margin: 40rpx;
+    text-align: center;
+}

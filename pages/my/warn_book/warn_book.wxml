@@ -1,0 +1,11 @@
+<!--pages/my/warn_book/warn_book.wxml-->
+<view>
+    <view wx:for="{{warn_list.RemindInfo}}" class="erweima_list" catchtap="to_noLoad" data-order="{{item.order_id}}">
+       
+            <text class="book_list" catchtap="to_noLoad" data-order="{{item.order_id}}">还书倒计时：{{item.surplusDay}}\n</text>
+        <text class="book_one" catchtap="to_noLoad" data-order="{{item.order_id}}">{{item.title1}}\n</text>
+        <text class="book_two" wx:if="{{item.title2}}" catchtap="to_noLoad" data-order="{{item.order_id}}">{{item.title2}}</text>
+
+    </view>
+    <view class="kuangkuang">*点击书单列表进入该书本的借书二维码</view>
+</view>

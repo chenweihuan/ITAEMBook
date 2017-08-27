@@ -1,0 +1,103 @@
+<!--pages/my/summaryMe/summaryMe.wxml-->
+
+ <scroll-view  style="height: {{windowHeight}}px; width: {{windowWidth}}px;" scroll-y="true">
+<view class="page">
+
+    <!--图书借阅排行榜  -->
+    <view class="page-bottom  bg_green" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 4&& !downMove?translate:''}}{{page == 4 && downMove?translateINGdown:''}}{{page > 4? top:''}}{{page == 3?translateING:''}}" data-page="{{page}}">
+         <view class="personalBook-container">
+            <view class="personalBook-item">图书借阅排行榜</view>
+              <view class="personalBook" wx:for="{{hotBooks}}" wx:key="{{hotBooks}}">
+                     <!-- 名次 -->
+                <view class="bookIndex">
+                   <image src="../../img/one.png" wx:if="{{item.index == 0}}"></image>
+                   <image src="../../img/two.png" wx:if="{{item.index == 1}}"></image>
+                   <image src="../../img/three.png" wx:if="{{item.index == 2}}"></image>
+                   <text wx:if="{{item.index > 2}}">{{item.index + 1}}</text>
+                </view>
+                <!--昵称  -->
+                <view class="bookName">{{lessThan}}{{item.title}}{{moreThan}}</view>
+                <!--借阅书本总数  -->
+                <view class="bookCount">{{item.lend_number}}</view>
+              </view>
+          </view>
+    </view>
+
+    <!--自己被点赞最多的评论  -->
+      <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 3&& !downMove?translate:''}}{{page == 3 && downMove?translateINGdown:''}}{{page > 3? top:''}}{{page == 2?translateING:''}}" data-page="{{page}}">
+            <view class="personalBook-container">
+               <view class="personalBook-item">我的神评</view>
+                    <!--当没人点赞评论的时候  -->
+                    <view class="noZaned" wx:if="{{zaned[0].num == 0}}">暂时没有知音为你点赞，继续加油哦</view>
+                    <!--当没写过评论的时候  -->
+                    <view class="noWrite" wx:if="{{zaned == ''}}">你还没有写过评论，快去评论图书</view>
+                    <!--当正常情况的时候  -->
+                    <view class="normal" wx:if="{{zaned[0].num !== 0}}">
+                        <view class="zanNum">{{zaned[0].num}}</view>
+                        <view class="zanContent" wx:for="{{zaned}}" wx:key="{{zaned}}">
+                            <!--评论书名  -->
+                            <view class="zanIndex">
+                              To:{{lessThan}}{{item.book_name}}{{moreThan}}            
+                            </view>
+                            <!--评论内容  -->
+                            <view class="zanContentMe">{{item.content}}</view>
+                            <!--评论底部  -->
+                            <view class="zanBottom">
+                                <view class="zanTime">{{item.time}}</view>
+                            </view>
+                        </view>
+                    </view>
+            </view>
+    </view>
+
+
+    <!--神评排行榜  -->
+      <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" 
+      style="{{page == 2 && !downMove?translate:''}}{{page == 2 && downMove?translateINGdown:''}}{{page > 2? top:''}}{{page == 1?translateING:''}}" data-page="{{page}}">
+           <view class="personalBook-container">
+            <view class="personalBook-item">神评排行榜</view>
+              <view class="contentNB" wx:for="{{contentNB}}" wx:key="{{contentNB}}">
+                    <!--评论名次  -->
+                    <view class="contentIndex">
+                       <image src="../../img/one.png" wx:if="{{item.index == 0}}"></image>
+                       <image src="../../img/two.png" wx:if="{{item.index == 1}}"></image>
+                       <image src="../../img/three.png" wx:if="{{item.index == 2}}"></image> 
+                       To:{{lessThan}}{{item.book_name}}{{moreThan}}            
+                    </view>
+                    <!--评论内容  -->
+                    <view class="contentMe">{{item.content}}</view>
+                    <!--评论底部  -->
+                    <view class="contentBottom">
+                        <view class="fromWho">From:{{item.name}}</view>
+                        <view class="fromZan">被{{item.num}}点赞过</view>
+                    </view>
+              </view>
+          </view>
+    </view>
+
+    <!--个人借阅排行榜  -->
+    <view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start"class="page-top"
+     style="{{page == 1&& !downMove?translate:''}}{{page == 1 && downMove?translateINGdown:''}}{{page > 1? top:''}}{{page == 0?translateING:''}}" data-page="{{page}}">
+          <view class="personalBook-container">
+            <view class="personalBook-item">个人借阅排行榜</view>
+              <view class="personalBook" wx:for="{{PersonalBook}}" wx:key="{{PersonalBook}}">
+                     <!-- 名次 -->
+                <view class="bookIndex">
+                   <image src="../../img/one.png" wx:if="{{item.index == 0}}"></image>
+                   <image src="../../img/two.png" wx:if="{{item.index == 1}}"></image>
+                   <image src="../../img/three.png" wx:if="{{item.index == 2}}"></image>
+                   <text wx:if="{{item.index > 2}}">{{item.index + 1}}</text>
+                </view>
+                <!--昵称  -->
+                <view class="bookName">{{item.name}}</view>
+                <!--借阅书本总数  -->
+                <view class="bookCount">{{item.borrow_book_count}}</view>
+              </view>
+          </view>
+         
+    </view>
+</view>
+</scroll-view>

@@ -1,0 +1,10 @@
+/* pages/my/contentMe/contentMe.wxss */
+.timeZan{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.contentMe{
+    border-bottom: 5rpx solid #f8f8f8;
+    padding: 20rpx;
+}

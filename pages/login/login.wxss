@@ -1,0 +1,202 @@
+/* pages/my/login/login.wxss */
+.container{
+    width: 98%;
+    margin:0 auto;
+}
+
+.input_phone{
+    display: flex;
+    flex-direction: row;
+    padding:20rpx;
+    border-bottom: 1rpx solid #999;
+    margin-top: 20rpx;
+}
+/*输入框的宽度*/
+.input_one{
+   margin-top: 10rpx;
+}
+.input_two{
+    width: 70%;
+}
+
+/*验证码的按键*/
+.setTime{
+    width:50%;
+    font-size:30rpx;
+    background-color: #1FA6E6;
+    color:#fff;
+
+}
+.btn{
+    line-height: 60rpx;
+    border: 1rpx solid #999;
+    font-size: 30rpx;
+    text-align: center;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+}
+/*温馨提示*/
+.tips{
+    font-size:24rpx;
+    color:#9E9B92;
+    padding:10rpx;
+    padding-left:20rpx;
+
+}
+
+/*登录按钮*/
+.login{
+    width: 90%;
+    margin: 0 auto;
+    background: #2aac5e;
+    text-align: center;
+    color: #fff;
+    padding-bottom: 20rpx;
+    padding-top: 20rpx;
+    border-radius: 10rpx;
+    margin-top: 25rpx;
+}
+
+/*tab切换*/
+.swiper-tab{
+  width: 100%; 
+  height:320rpx;
+  text-align: center; 
+  line-height:50rpx;
+  position: relative;
+  background-image: url("https://mcache.ifanr.cn/static/gbuild/user/images/bg-mobile.png");
+  background-size: cover;
+
+}
+.swiper-tab-list{
+  font-size: 38rpx; 
+  display: inline-block; 
+  width: 30%; 
+  color: #656A71;
+  position: absolute;
+  bottom: 20rpx;
+}
+.swiper-tab-list_one{ /*用户登录*/
+    left: 10%;
+}
+.swiper-tab-list_two{ /*管理员登录*/
+    left: 55%;
+}
+.loginOn{
+  color: #fff; 
+  border-bottom: 5rpx solid #fff;
+}
+.swiper-box{ 
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  
+ }
+/*.swiper-box view{ 
+  text-align: center; 
+}*/
+
+
+/*管理员登录*/
+.input_username{
+    padding:30rpx;
+    border-bottom:1rpx solid #999;
+    margin-top:20rpx;
+}
+
+/*绚丽文字  */
+  .chooseTag_top{
+    height: 20%;
+    line-height: 290%;
+  }
+	.title {
+  background-image: -webkit-linear-gradient(left,#D81159, #E53A40 10%, #FFBC42 20%, #75D701 30%, #30A9DE 40%,#D81159 50%, #E53A40 60%, #FFBC42 70%, #75D701 80%, #30A9DE 90%,#D81159);
+  color:transparent;
+  -webkit-background-clip: text;
+  background-size: 200% 100%;
+  animation: flowlight 5s linear infinite;
+  text-align: center;
+}
+
+
+@keyframes flowlight {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+
+/*选择标签  */
+.chooseTag{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:#f8f8f8;
+    z-index:10001;
+}
+.tags{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-top:15rpx;
+}
+.tag{
+  background:#fff;
+  font-size:31rpx;
+  border:1px solid #eaeaea;
+  padding:20rpx 30rpx;
+  text-align: center;
+  margin-top: 10rpx;
+}
+.on{
+      border-color: #afcb9f;
+      background: #d6e9c4;
+      color: #000;
+}
+
+/*添加自定义标签  */
+.add_tag > input{
+     color:#333;
+    line-height:normal;
+    font-family:"Microsoft YaHei",Tahoma,Verdana,SimSun;
+    text-shadow:0px 1px 2px #fff;
+    background-color:rgb(255,255,255);
+    border: 1px solid #ccc;
+    border-radius: 10rpx;
+    padding: 10rpx;
+}
+.add_tag{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  font-size: 35rpx;
+  padding:15rpx;
+
+}
+.add_tag > view{
+  line-height: 70rpx;
+  color: #555;
+}
+.sure_step{
+      color: #fff;
+      background: #3fa156;
+      border: 1px solid #528641;
+      width:40%;
+      margin:20rpx auto;
+      text-align: center;
+      padding: 15rpx 20rpx;
+      border-radius: 10rpx;
+}
+.jump_step{
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  text-align: center;
+  color: #555;
+}
+

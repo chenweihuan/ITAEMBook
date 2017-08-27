@@ -1,0 +1,203 @@
+<!--pages/detail/detail.wxml-->
+<view class="detail {{is_exise ? 'detail_opacity':'is_choose'}}" >
+    <!--图书详情的头部-->
+    <view class="top">
+           <image src="{{book_detail.book_image}}" mode="widthFix"></image>
+         <view class="top_right">
+            <text class="book_name">{{book_detail.title}}\n</text>
+            <text>作者：{{book_detail.author}}\n</text>
+            <text>索书号：{{book_detail.index_number}}\n</text>
+            <text>出版社：{{book_detail.press}}\n</text>
+             <text wx:if="{{dis_unique_book_id == true}}">馆藏地点：{{book_detail.book_location}}\n</text>
+            <text>押金：{{book_detail.price}}</text>
+        </view>
+    </view>
+      <!--图书表格-->
+<view class="table" wx:if="{{dis_unique_book_id == false}}"> 
+        <view class="tr bg-w">   
+                <view class="th tr_two">图书标题</view>  
+                <view class="th tr_two">馆藏地点</view>   
+                <view class="th tr_two">是否在馆</view>  
+        </view>  
+        <block wx:for="{{location}}" wx:key="{{unique_book_id}}">  
+          <view class="tr bg-g tr_two" wx:if="{{index % 2 == 0}}">  
+                <view class="td">{{book_detail.title}}</view>    
+                <view class="td">{{item.book_location}}</view>   
+                <view class="td">{{item.is_exist == 0 ? "否" : "是"}}</view>   
+            </view>    
+            <view class="tr tr_two" wx:else>    
+                <view class="td">{{book_detail.title}}</view>    
+                <view class="td">{{item.book_location}}</view>   
+                <view class="td">{{item.is_exist == 0 ? "否" : "是"}}</view>                       
+                </view> 
+         </block>
+ </view>
+<!--选择哪一本图书和预定时间-->
+<view class="choose" wx:if="{{dis_unique_book_id == false}}">
+    <view catchtap="sure_choose" class="to_height">{{unique_book_id ==  ''?'请选择：书本所藏地点/预订时间':'已选择 '+ location[index].book_location +' / '+ date}}</view>
+</view>
+
+<!--图书简介-->
+    <!-- <view class="summary">
+        <view class="book_name">简介</view>
+        <view class="book_summary">{{book_detail.introduction == ""?"对不起，此书没有简介":book_detail.introduction}}</view>
+    </view> -->
+
+    <!--tab选项卡  -->
+    <view class="tab">
+        <view class="tab-list {{currentTab==0 ? 'active' : 'unactive'}}" data-current="0" bindtap="swichNav">简介</view>
+        <view class="tab-list {{currentTab==1 ? 'active' : 'unactive'}}" data-current="1" bindtap="swichNav">书评</view>
+        <view class="tab-list {{currentTab==2 ? 'active' : 'unactive'}}" data-current="2" bindtap="swichNav">写书评</view>
+    </view>
+    <!--tab选项卡具体内容  -->
+       <!-- 简介  -->
+      <view class="tab_content book_summary summary">
+        <view class="{{currentTab==0 ? 'show' : 'hide'}}">
+          {{book_detail.introduction == ""?"对不起，此书没有简介":book_detail.introduction}}
+        </view>
+        <!-- 书评 -->
+        <view class="{{currentTab==1 ? 'show' : 'hide'}}">
+          <view class="contentItem" wx:for="{{contentItem.bookreviews}}" wx:key="{{contentItem.bookreviews}}">
+                 <view>{{item.name}}</view>
+                 <view>{{item.content}}</view>
+                <view class="contentButtom">
+                    <view >{{item.time}}</view>
+                    <view class="zan" bindtap="clickZan"
+                     data-zan="{{item.flag}}" data-goodId="{{item.good_id}}"
+                      data-reviewId="{{item.id}}">
+                      <image src="{{item.flag?'../img/zaned.png':'../img/zan.png'}}"
+                      data-zan="{{item.flag}}" data-goodId="{{item.good_id}}"
+                      data-reviewId="{{item.id}}"></image>({{item.num}})
+                    </view>
+                </view>
+          </view>
+       </view>
+          <!--没有登录的人不能评论  -->
+          <view class="{{currentTab==2 ? 'show' : 'hide'}}" wx:if="{{!phone || !isLend}}"> 
+            只有借阅过 {{book_detail.title}} 才有权限写书评
+          </view>
+        <!--写书评  -->
+        <view class="{{currentTab==2 ? 'show' : 'hide'}}" wx:if="{{phone && isLend}}">
+            <!--五星评价  -->
+        	<view class="starability-container" >
+            <view class="starability-basic">
+                <text>我对 {{book_detail.title}} 的评价：\n</text>
+                <view  class="{{starNum >= 1 ? 'on':' '}} " bindtap="star" data-star="1">1 star</view>
+                <view  class="{{starNum >= 2 ? 'on':' '}} " bindtap="star" data-star="2">2 stars</view>
+                <view  class="{{starNum >= 3 ? 'on':' '}} " bindtap="star" data-star="3">3 stars</view>
+                <view   class="{{starNum >= 4 ? 'on':' '}} " bindtap="star" data-star="4">4 stars</view>
+                <view   class="{{starNum >= 5 ? 'on':' '}} " bindtap="star" data-star="5">5 stars</view>
+            </view>
+          </view>
+            <!--输入评论  -->
+            <view class="inputContent">
+                <text>我还想说：\n</text>
+                <textarea bindinput="bindTextAreaBlur"  placeholder="请输入..." maxlength="2000"/>
+            </view>
+        </view>
+    </view>
+
+<!--现在预订的生成二维码按钮-->
+
+       <view class="order_btn"  catchtap="borrow_erweima" data-order="{{item.order_id}}" wx:if="{{dis_tomorrow}}">
+                 生成 {{book_detail.title}} 的借书二维码
+                   </view>
+
+
+ <view class="bot_father" wx:if="{{dis_unique_book_id == false}}">
+
+        <!--相关图书推荐 bindscroll="scroll"-->
+           <!-- <scroll-view class="scroll-view_H" scroll-x="true"  style="width: 100%" style="display:{{dis_introduction}}">
+
+           <view class="bottom_two_child scroll-view-item_H" wx:for="{{introduction}}" wx:key="{{introduction}}" >
+             <view >
+                <image src="{{item.book_image == '' ? 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494171022985&di=571036f2ace29ddacb295f8b3b171fe7&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fb03533fa828ba61e85467f3d4334970a304e5973.jpg' : item.book_image }}" mode="widthFix" bindtap="load_introduction" data-id="{{item.book_id}}"></image>
+              </view>
+                <view class="title" >{{item.title}}</view>
+              </view>
+         </scroll-view> -->
+
+        <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%" style="display:{{dis_introduction}}">
+           <view class="bottom_two_child scroll-view-item_H" wx:for="{{introduction}}" wx:key="{{introduction}}" >
+             <view >
+                <image src="{{item.book_image == '' ? 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494171022985&di=571036f2ace29ddacb295f8b3b171fe7&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fb03533fa828ba61e85467f3d4334970a304e5973.jpg' : item.book_image }}" mode="widthFix" bindtap="load_introduction" data-id="{{item.book_id}}"></image>
+              </view>
+                <view class="title" >{{item.title}}</view>
+            </view>
+        </scroll-view>
+        <!-- <view class="bottom_two" style="display:{{dis_introduction}}">
+            <view class="bottom_two_child" wx:for="{{introduction}}" >
+             <view >
+                <image src="{{item.book_image == '' ? 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494171022985&di=571036f2ace29ddacb295f8b3b171fe7&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fb03533fa828ba61e85467f3d4334970a304e5973.jpg' : item.book_image }}" mode="widthFix" bindtap="load_introduction" data-id="{{item.book_id}}"></image>
+              </view>
+                
+                <view class="title" >{{item.title}}</view>
+              </view>
+          </view> -->
+        <view style="display:{{dis_introduction}}" class="close" catchtap="close_introduction">
+        </view>
+
+        <!--加入借书单和在线预订按钮-->
+        <view class="bottom {{currentTab==2 ? 'hide' : 'flex'}}" >
+         <button class="add " catchtap="add_book">加入借书单</button>
+          <form report-submit bindsubmit="formSubmit" class="add  ">
+             <button form-type="submit" catchtap="online_book" class="add_son">在线预订</button>
+         </form>
+        </view>
+
+        <view class="{{currentTab==2 ? 'show' : 'hide'}} submitContent " wx:if="{{phone && isLend}}"
+         bindtap="submitContent">
+          提交书评
+        </view>
+
+    </view>
+
+</view>
+
+<!--选择器-->
+<view class="choosed {{is_exise ? 'is_choose':'is_opacity'}}">
+    <view class="choose_bottom" >
+            <!--关闭图标-->
+            <view class="close" catchtap="sure_choose">
+
+            </view>
+             <!--选择器头部-->
+             <view class="top choose_bottom_top">
+           <image src="{{book_detail.book_image}}" mode="widthFix"></image>
+         <view class="top_right">
+            <text class="book_name">{{book_detail.title}}\n</text>
+            <text class="book_small">作者：{{book_detail.author}}\n</text>
+            <text class="book_small">请选择 馆藏地点、预约时间</text>
+        </view>
+    </view>
+        <!--选择器中部-->
+        <view>
+              <!--书本所藏地点选择器-->
+            <view class="book_small book_small_text">书本所藏地点</view>
+            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{location}}" range-key="{{'book_location'}}">
+               
+                <view class="picker">
+                当前选择：{{location[index].book_location}}
+                </view>
+            </picker> 
+        <!--时间选择器-->
+         <view class="book_small book_small_text">预订拿书时间</view>
+          <picker mode="date" class="picker" value="{{date}}" start="{{date}}" end="2020-2-22" bindchange="bindDateChange">
+               
+                <view class="picker">
+                    当前选择: {{date}}
+                </view>
+            </picker>
+            <view class="book_small book_small_text">* 直接借书时借书时间不起任何作用</view>
+            <view catchtap="sure_choose" class="sure_choose">确定</view>
+        </view>
+          
+
+    </view>
+    
+</view>
+
+<!--想看按钮  -->
+<view class="wantLook" bindtap="wantLook">
+      <image src="../img/want.png"></image>
+</view>

@@ -1,0 +1,7 @@
+<!--pages/my/my_erweima/my_erweima.wxml-->
+<view class="erweima_list" wx:for="{{no_list}}" catchtap="to_noLoad" data-order="{{item.order_id}}">
+        <text class="book_list" bindtap="to_noLoad" data-order="{{item.order_id}}">书单列表：\n</text>
+        <text class="book_one" catchtap="to_noLoad" data-order="{{item.order_id}}">book_one：{{item.title1}}\n</text>
+        <text class="book_two" wx:if="{{item.title2}}" catchtap="to_noLoad" data-order="{{item.order_id}}">book_two：{{item.title2}}</text>  
+</view>
+  <view class="kuangkuang">*点击书单列表进入该书本的还书二维码</view>

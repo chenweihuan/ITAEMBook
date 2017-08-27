@@ -1,0 +1,407 @@
+/* pages/detail/detail.wxss */
+view{
+    /*整体颜色*/
+    color:#8d8d8d;
+}
+.detail{
+    font-size:30rpx;
+    line-height:45rpx;
+    position: absolute;
+    width: 100%;
+}
+.choose_bottom{
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+}
+.choose_img{
+    width: 300rpx;
+    height: 250rpx;
+}
+.choosed{
+    background: red;
+    width: 100%;
+}
+.book_small{
+    font-size: 30rpx;
+}
+view .choose_bottom_top{
+    padding-left: 5%;
+    padding-top:0;
+
+}
+.is_choose{
+    z-index: 1001;
+    opacity: 1;
+    /*渐变*/
+    transition:opacity 1s;
+}
+/*透明度*/
+.is_opacity{
+    z-index: 1000;
+    opacity: 0;
+    transition:opacity 1s;
+}
+.detail_opacity{
+     background-color: rgba(0, 0, 0, 0.2)
+}
+.sure_choose{/*确定选择*/
+    background: #2aac5e;
+    width: 100%;
+    padding: 20rpx;
+    text-align: center;
+    color:#fff;
+}
+/*头部*/
+.top{
+    display: flex;
+    flex-direction: row;
+    padding:10rpx;
+ 
+}
+.book_name{
+    color: #000;
+    font-size:35rpx;
+    text-align: center;
+}
+.top_right{
+    padding-left:40rpx;
+    padding-top:40rpx;
+    width: 150%;
+}
+
+/*表格*/
+.table { 
+     border: 0px solid darkgray;
+     border-bottom: 1rpx solid #D8D8D8;
+}
+.tr {  
+    display: flex; 
+     width: 100%;  
+     justify-content: center;  
+     align-items: center;
+}
+.td {   
+     width:40%;    
+     justify-content: center;  
+       text-align: center;
+       /*只对中文起作用，强制换行。*/
+       white-space: pre-wrap;
+       /*只对英文起作用，以单词作为换行依据。*/
+        word-wrap: break-word
+}
+.table .bg-w{  
+    background: #2aac5e;
+}
+.bg-g{  
+    background: #9FC198;
+}
+.th {  
+    width: 40%;  
+    justify-content: center; 
+    background: #2aac5e;  
+    color: #fff; 
+    display: flex; 
+    align-items: center;
+}
+.tr_two{
+    padding-top:30rpx;
+    padding-bottom:30rpx;
+}
+
+/*选择器*/
+.to_height{
+   background-color:#E1E5E8;
+    padding:30rpx;
+    margin-top:20rpx;
+    font-size:34rpx;
+
+}
+
+.picker{
+    padding: 8rpx;
+    background-color: #E1E5E8;
+    color:#000;
+
+}
+.book_small_text{
+    padding-top: 20rpx;
+    padding-bottom: 15rpx;
+    padding-left: 5%;
+
+}
+.summary{
+    padding-top:20rpx;
+}
+.book_summary{
+    text-indent:40rpx;
+}
+.bot_father{
+         position: relative;
+         flex-direction: row;
+         width: 100%;
+         margin-bottom:150rpx;
+}
+button{
+    border-radius:0;
+}
+.bottom_two{
+    background-color: #fff;
+    border-top: #8d8d8d solid 1rpx;
+    width: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+}
+.bottom_two_child{
+    width: 30%;
+    padding: 14rpx;
+
+}
+.bottom_two_child image{
+    width: 90%;
+}
+.bottom{
+     background: #D8D8D8;
+     width: 100%;
+     display: flex;
+     position: fixed;
+     bottom: 0;
+}
+.title{
+   text-align: center;
+   word-break: break-all;
+   white-space: pre-wrap;
+   font-size: 28rpx;
+}
+.add{
+    display: block;
+    background: #2aac5e;
+    padding: 14rpx;
+    margin-left: -20rpx;
+    text-align: center;
+    width:50%;
+    font-size:40rpx;
+    color:#fff;
+}
+.add_son{
+    color: #fff;
+    background: #2aac5e;
+    width: 100%;
+    font-size:40rpx;
+  
+}
+
+button::after{
+    border: none;
+}
+button{
+    line-height: 90rpx;
+}
+
+/*推荐图书*/
+.introduction_img{
+    height: 200rpx;
+    margin-bottom:-10rpx;
+    margin-top: 5rpx;
+
+}
+/* .bottom_two_child{
+    width: 180rpx;
+} */
+/*关闭按钮*/
+
+.close {
+    position:absolute;
+    display:inline-block;
+    width:23rpx;
+    height:31rpx;
+    overflow:hidden;
+    transform:scale(3);
+    text-align:center;
+    top:32rpx;
+    right:20rpx;
+    background-image:url(http://www.aloneness.cn/images/libraryImages/image1.jpg);
+    background-size:contain;
+    background-repeat:no-repeat;
+}
+/*.close::before, .close::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    right: 0;
+    margin-top: -0.5px;
+    background: #000;
+}
+.close::before{
+    transform: rotate(45deg);
+}
+.close::after{
+    transform: rotate(-45deg);
+}*/
+
+/*生成借书二维码的按钮*/
+.order_btn{
+    position: fixed;
+    bottom: 0;
+    background: #2aac5e;
+    padding-top: 34rpx;
+    padding-bottom: 34rpx;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size:36rpx;
+}
+
+/*tab选项卡  */
+.tab{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
+.flex{
+  display: flex;
+}
+.tab-list{
+  width:33.3%;
+  text-align:center;
+  font-size:30rpx;
+  padding:10rpx;
+  color:#5d5d5d;
+  padding-top: 20rpx;
+}
+.active{
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    font-size:34rpx;
+
+}
+.unactive{
+  color: #8d8d8d;
+  border-bottom:1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+
+/*五星评价  */
+
+
+  .starability-basic {
+      display:block;
+      position:relative;
+      width:220px;
+      min-height:60px;
+      padding:0;
+      border:none;
+      margin:10rpx auto;
+
+}
+.starability-basic>input {
+	position: absolute;
+	margin-right: -100%;
+	opacity: 0
+}
+.starability-basic>view {
+	position: relative;
+	display: inline-block;
+	float: left;
+	width: 30px;
+	height: 30px;
+	color: transparent;
+	cursor: pointer;
+	background-repeat: no-repeat;
+  margin-left:15rpx;
+}
+	.starability-basic > view {
+		background-image: url("http://119.29.194.197/love/a/start.png");
+		background-size: 30px auto;
+	}
+  .on{
+  	background-position: 0 -30px
+}
+/*我还想说  */
+.inputContent > textarea{
+   background-color: #ddd;
+   width: 100%;
+   padding: 25rpx;
+}
+.submitContent{
+  background:#2aac5e;
+  text-align:center;
+  width:100%;
+  font-size:40rpx;
+  color:#fff;
+  padding-top:30rpx;
+  padding-bottom:30rpx;
+  margin-top:20rpx;
+}
+/*书评列表  */
+.zan > image{
+  width: 40rpx;
+  height: 36rpx;
+}
+.contentButtom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding:10rpx 20rpx 10rpx 10rpx;
+}
+
+/*相关书籍  */
+/* .scroll-view_H{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.scroll-view-item{
+  height: 300rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  width: 33%;
+  height: 300rpx;
+} */
+
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 300rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  height: 300rpx;
+}
+
+/*想看  */
+.wantLook{
+  display: inline-block;
+  position:fixed;
+  right:30rpx;
+  bottom:130rpx;
+  background-color:#fff;
+  font-size:50rpx;
+  padding:10rpx;
+  border-radius:80rpx;
+  z-index:10000;
+  box-shadow:0px 0px 5px black;
+  /* background: url("../img/want.png") */
+  width: 80rpx;
+  height: 80rpx;
+
+}
+.wantLook  > image{
+  width: 100%;
+  height: 100%;
+}

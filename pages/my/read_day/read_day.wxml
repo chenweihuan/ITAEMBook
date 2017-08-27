@@ -1,0 +1,28 @@
+<!--pages/my/read_day/read_day.wxml-->
+<view class="container">
+    <!-- <view class="top_top">
+        <text style="line-height:70rpx;">是否推荐</text>
+        <switch checked="{{!is_exise}}" bindchange="switchChange"/>
+    </view> -->
+    <view class="buttom">
+         <!--不推荐-->
+        <view class=" buttom_one {{is_exise?'is_exise':'no_exise'}}"></view>
+        <!--推荐-->
+        <view  class="buttom_two {{is_exise?'no_exise':'is_exise'}}" id="{{read_day.book_id}}" bindtap="detail">
+             <view class="top">
+           <image src="{{read_day.book_image}}" mode="widthFix"></image>
+            <!--<image src="https://img3.doubanio.com/lpic/s1876251.jpg" mode="widthFix"></image>-->
+         <view class="top_right">
+            <text class="book_name">{{read_day.title}}\n</text>
+            <text class="small">作者：{{read_day.author}}\n</text>
+            <text class="small">索书号：{{read_day.index_number}}\n</text>
+       
+        </view>
+    </view>
+             <view style="text-align:center;margin:20rpx;">简介：</view>
+            <view style="text-indent:2em;">{{read_day.introduction}}</view>  
+       </view>
+
+    </view>
+ 
+</view>

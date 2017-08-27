@@ -1,0 +1,35 @@
+/* pages/my/managerBook/managerBook.wxss */
+.bottom{
+    display: block;
+    background: #2aac5e;
+    padding: 20rpx;
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+}
+.bottom_btn{
+    display: flex;
+    flex-direction: row;
+}
+/*头部*/
+.top{
+    display: flex;
+    flex-direction: row;
+    padding:10rpx;
+}
+.book_name{
+    color: #000;
+    font-size:35rpx;
+    text-align: center;
+}
+.top_right{
+    padding-left:40rpx;
+    padding-top:10rpx;
+    width: 150%;
+}
+text{
+    font-size: 30rpx;
+}
