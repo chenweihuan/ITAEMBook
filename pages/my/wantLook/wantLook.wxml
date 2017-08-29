@@ -1,6 +1,0 @@
-<!--pages/my/wantLook/wantLook.wxml-->
-<view class="container">
-  <view class="hr"></view>
-        <import src="../../template/template"/>
-        <template is="book_list" data="{{books}}"></template>
-</view>
