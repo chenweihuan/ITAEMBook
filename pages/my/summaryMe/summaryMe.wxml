@@ -1,0 +1,195 @@
+<!--pages/my/summaryMe/summaryMe.wxml-->
+
+ <scroll-view  style="height: {{windowHeight}}px; width: {{windowWidth}}px;" scroll-y="true">
+<view class="page">
+      <!--我的想读总量  -->
+       <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 9&& !downMove?translate:''}}{{page == 9 && downMove?translateINGdown:''}}{{page > 9? top:''}}{{page == 8?translateING:''}}" data-page="{{page}}">
+               <view class="booksWantNum-container ">
+                  <view class="booksNum">   我想读的书还有 <text>{{wantBook}} </text> 本</view>
+                  <view class="text">按照2016年中国人均读书约5本/年的速度</view>
+                  <view class="pageTime">需要 <text>{{wantBook / 5}}</text> 年才能读完</view> 
+                  <view class="text">加油！</view>
+                   <view class="text">ITAEMBook 永远陪伴着你</view>
+                </view>
+       </view>
+          <!--月份借阅量折线图  -->
+       <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 8&& !downMove?translate:''}}{{page == 8 && downMove?translateINGdown:''}}{{page > 8? top:''}}{{page == 7?translateING:''}}" data-page="{{page}}">
+          
+            <view class="type-item">月度借阅统计</view> 
+            <canvas class="zhexian"  style="{{page == 7? 'width: 320px; height: 300px;' :'display :none'}}" canvas-id="lineCanvas"/>
+       </view>
+        <!--我的读书总量  -->
+       <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 7&& !downMove?translate:''}}{{page == 7 && downMove?translateINGdown:''}}{{page > 7? top:''}}{{page == 6?translateING:''}}" data-page="{{page}}">
+           <view class="booksNum-container">
+                   <view class="booksNum"> 2017年我读书总量为 <text>{{booksNum}}</text> 本</view>
+                  <view class="pageNum">这些书共 <text>{{pageNum}}</text>页</view> 
+                  <view class="text"> 按1页/分钟的速度</view>
+                  <view class="pageTime">读完约花费了 <text>{{pageTime}}</text> 小时</view> 
+           </view>
+    
+       </view>
+   <!-- 我的神评 -->
+       <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 6&& !downMove?translate:''}}{{page == 6 && downMove?translateINGdown:''}}{{page > 6? top:''}}{{page == 5?translateING:''}}" data-page="{{page}}">
+          
+                             
+                    <view class="personalBook-container">
+               <view class="personalBook-item">我的神评</view>
+                    <!-- 当没人点赞评论的时候  -->
+                    <view class="noZaned" wx:if="{{zaned[0].num == 0}}">暂时没有知音为你点赞，继续加油哦</view>
+                    <!--当没写过评论的时候  -->
+                    <view class="noWrite" wx:if="{{zaned == ''}}">你还没有写过评论，快去评论图书</view>
+                    <!--当正常情况的时候  -->
+                    <view class="normal" wx:if="{{zaned[0].num !== 0}}">
+                        <view class="zanNum"> <text>{{zaned[0].num}}</text> 人点赞我的这条评论</view>
+                        <view class="zanContent" wx:for="{{zaned}}" wx:key="{{zaned}}">
+                            <!--评论书名  -->
+                            <view class="zanIndex">
+                              <view>写给：</view>
+                              <view>{{lessThan}}{{item.book_name}}{{moreThan}} </view>
+                            </view>
+                            <!--评论获得的星星  -->
+                            <view class="star">
+                                <view>评分：</view>
+                                     <!--小星星  -->
+                                      <view class="starability-basic-small">
+                                          <view  class="{{item.score >= 1 ? 'onSmall':' '}} " bindtap="star" data-star="1">1 star</view>
+                                          <view  class="{{item.score >= 2 ? 'onSmall':' '}} " bindtap="star" data-star="2">2 stars</view>
+                                          <view  class="{{item.score >= 3 ? 'onSmall':' '}} " bindtap="star" data-star="3">3 stars</view>
+                                          <view   class="{{item.score >= 4 ? 'onSmall':' '}} " bindtap="star" data-star="4">4 stars</view>
+                                          <view   class="{{item.score >= 5 ? 'onSmall':' '}} " bindtap="star" data-star="5">5 stars</view>
+                                      </view>
+                            </view>
+                            <!--评论内容  -->
+                            <view class="zanContentMe">
+                              <view>评论内容：</view>
+                              <view>{{item.content}}</view>
+                            </view>
+                            <!--评论底部  -->
+                            <view class="zanBottom">
+                                <view>时间：</view>
+                                <view class="zanTime">{{item.time}}</view>
+                            </view>
+                        </view>
+                    </view>
+            </view>
+       </view>
+    <!--神评排行榜 -->
+       <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 5&& !downMove?translate:''}}{{page == 5 && downMove?translateINGdown:''}}{{page > 5? top:''}}{{page == 4?translateING:''}}" data-page="{{page}}">
+            <view class="personalBook-container">
+            <view class="personalBook-item">神评排行榜</view>
+              <view class="contentNB" wx:for="{{contentNB}}" wx:key="{{contentNB}}">
+                    <!--评论名次  -->
+                    <view class="contentIndex">
+                       <image src="../../img/one.png" wx:if="{{item.index == 0}}"></image>
+                       <image src="../../img/two.png" wx:if="{{item.index == 1}}"></image>
+                       <image src="../../img/three.png" wx:if="{{item.index == 2}}"></image> 
+
+                            <view class="contentIndex-Name">
+                              <view>写给：</view>
+                              <view>{{lessThan}}{{item.book_name}}{{moreThan}} </view>
+                            </view>          
+                    </view>
+                        <!--评论获得的星星  -->
+                            <view class="godStar">
+                                <view>评分：</view>
+                                     <!--小星星  -->
+                                      <view class="starability-basic-small">
+                                          <view  class="{{item.score >= 1 ? 'onSmall':' '}} " bindtap="star" data-star="1">1 star</view>
+                                          <view  class="{{item.score >= 2 ? 'onSmall':' '}} " bindtap="star" data-star="2">2 stars</view>
+                                          <view  class="{{item.score >= 3 ? 'onSmall':' '}} " bindtap="star" data-star="3">3 stars</view>
+                                          <view   class="{{item.score >= 4 ? 'onSmall':' '}} " bindtap="star" data-star="4">4 stars</view>
+                                          <view   class="{{item.score >= 5 ? 'onSmall':' '}} " bindtap="star" data-star="5">5 stars</view>
+                                      </view>
+                            </view>
+                    <!--评论内容  -->
+                       <view class="ContentMe-center">
+                              <view>评论内容：</view>
+                              <view>{{item.content}}</view>
+                            </view>
+                    <!--评论底部  -->
+                    <view class="contentBottom">
+                            <view class="contentBottom-Item">
+                                  <view> 出自：</view>
+                                  <view>{{item.name}}</view>
+                            </view>
+                        <view class="fromZan">
+                          <text>{{item.num}} </text> <text>人点赞过</text> 
+                        </view>
+                    </view>
+              </view>
+          </view>
+                  
+
+       </view>
+    <!-- 个人借阅排行榜 -->
+    <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 4&& !downMove?translate:''}}{{page == 4 && downMove?translateINGdown:''}}{{page > 4? top:''}}{{page == 3?translateING:''}}" data-page="{{page}}">
+          <view class="personalBook-container">
+            <view class="personalBook-item">个人借阅排行榜</view>
+              <view class="personalBook" wx:for="{{PersonalBook}}" wx:key="{{PersonalBook}}">
+                     <!-- 名次 -->
+                <view class="bookIndex">
+                   <image src="../../img/one.png" wx:if="{{item.index == 0}}"></image>
+                   <image src="../../img/two.png" wx:if="{{item.index == 1}}"></image>
+                   <image src="../../img/three.png" wx:if="{{item.index == 2}}"></image>
+                   <text wx:if="{{item.index > 2}}">{{item.index + 1}}</text>
+                </view>
+                <!--昵称  -->
+                <view class="bookName">{{item.name}}</view>
+                <!--借阅书本总数  -->
+                <view class="bookCount">{{item.borrow_book_count}}</view>
+              </view>
+          </view>
+    </view>
+
+    <!-- 各类图书统计 -->
+      <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" style="{{page == 3&& !downMove?translate:''}}{{page == 3 && downMove?translateINGdown:''}}{{page > 3? top:''}}{{page == 2?translateING:''}}" data-page="{{page}}">
+                      <view class="type-item"> 各类图书统计</view> 
+                    <canvas  
+                    style="{{page == 2? 'width: 320px; height: 300px;' :'display :none'}}" canvas-id="pieCanvas"/>
+    </view>
+
+
+    <!-- 图书借阅排行榜 -->
+      <view class="page-top" bindtouchmove="tap_drag" bindtouchend="tap_end" 
+      bindtouchstart="tap_start" 
+      style="{{page == 2 && !downMove?translate:''}}{{page == 2 && downMove?translateINGdown:''}}{{page > 2? top:''}}{{page == 1?translateING:''}}" data-page="{{page}}">
+           
+
+              <view class="personalBook-container">
+            <view class="personalBook-item">图书借阅排行榜</view>
+              <view class="personalBook personalBookAll" wx:for="{{hotBooks}}" wx:key="{{hotBooks}}">
+                     <!-- 名次 -->
+                <view class="bookIndexAll">
+                   <image src="../../img/one.png" wx:if="{{item.index == 0}}"></image>
+                   <image src="../../img/two.png" wx:if="{{item.index == 1}}"></image>
+                   <image src="../../img/three.png" wx:if="{{item.index == 2}}"></image>
+                   <text wx:if="{{item.index > 2}}">{{item.index + 1}}</text>
+                </view>
+                <!--昵称  -->
+                <view class="bookNameAll">{{lessThan}}{{item.title}}{{moreThan}}</view>
+                <!--借阅书本总数  -->
+                <view class="bookCountAll">{{item.lend_number}}</view>
+              </view>
+          </view>
+       </view>
+
+    <!-- 首页 -->
+    <view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start"class="page-top"
+     style="{{page == 1&& !downMove?translate:''}}{{page == 1 && downMove?translateINGdown:''}}{{page > 1? top:''}}{{page == 0?translateING:''}}" data-page="{{page}}">  
+       <view class="firstPage">
+                <view class="top"><text>2017</text><text>我的ITAEMBook</text></view>
+                <view class="middle"><text>读书报告</text> </view>
+                <view class="bottom">基于2017年你和万千ITAEMBook用户对读书条目的访问数据 </view>
+       </view>
+
+       
+    </view>
+</view>
+</scroll-view>

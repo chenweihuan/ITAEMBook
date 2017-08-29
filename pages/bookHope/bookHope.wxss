@@ -1,0 +1,17 @@
+/* pages/bookHope/bookHope.wxss */
+/*填写书愿单的表格  */
+.bookItem{
+  display: flex;
+  flex-direction: row;
+}
+.bookItem > label{
+  width: 20%;
+  text-align: right;
+}
+
+/*保存按钮  */
+.sendBookHope{
+  background-color: #2aac5e;
+  text-align: center;
+  padding: 10rpx;
+}

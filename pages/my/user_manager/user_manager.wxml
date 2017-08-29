@@ -1,0 +1,64 @@
+<!--pages/user_manager/user_manager.wxml-->
+<!--登录界面-->
+<view class="login_father" style="display:{{display}}">
+    <!--<view class="user" catchtap="to_user">用户登录</view>
+    <view class="manager" catchtap="to_manager">管理员登录</view>-->
+    
+    <!--用户没有登录-->
+    <view class="top" catchtap="to_user">
+        <text class="top_one">登录/注册\n</text>
+        <text class="top_two">登陆后才可以借书哦</text>
+    </view>
+    <view class="buttom">
+        <view class="buttom_list">服务电话：13420118411</view>
+    </view>
+</view> 
+
+<!--个人中心-->
+<view class="borrow_list" style="display:{{display_book}}">
+        <!--用户信息-->
+        <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <!--<view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>-->
+
+<view class="down">
+   <!--我的借书二维码-->
+  <view class="down_list down_list_first" catchtap="my_erweima">
+      我的还书二维码
+  </view>
+     <!-- ITAEM猜-->
+  <view class="down_list" catchtap="read_day">
+      ITAEM猜
+  </view>
+       <!--想读-->
+  <view class="down_list" catchtap="wantLook">
+      想读
+  </view>
+       <!--我的书愿单-->
+  <view class="down_list" catchtap="bookHopeMe">
+      我的书愿单
+  </view>
+  <!--我的评论  -->
+  <!-- <view class="down_list" catchtap="contentMe">
+      我写过的书评
+  </view> -->
+     <!--还书提醒-->
+  <view class="down_list" catchtap="warn_book">
+      还书提醒
+  </view>
+  <!--个人借阅图书年度统计  -->
+    <view class="down_list" catchtap="summaryMe">
+      2017读书报告
+  </view>
+   <!-- <view class="down_list">服务电话：13420118411</view> -->
+</view>
+  <!--退出登录-->
+  <view class="downLogin" catchtap="downLogin">
+      退出登录
+  </view>
+
+</view>

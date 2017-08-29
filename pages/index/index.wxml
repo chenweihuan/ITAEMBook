@@ -1,0 +1,51 @@
+<view>
+  <scroll-view  style="height: {{windowHeight}}px; width: {{windowWidth}}px;" scroll-y="true" bindscrolltoupper="pullDownRefresh" bindscrolltolower="pullUpLoad" >
+<view class="container">
+
+    <!--查询界面-->
+    <view class="search">
+      <view class="search_book" catchtap="soso">
+        <!--搜索的放大镜图标-->
+            <icon class="big" type="search" size="15"/>
+         输入关键字、拼音或扫一扫ISBN码
+      </view>
+    </view>
+    <!--图书分类-->
+
+
+    <swiper indicator-dots="{{indicatorDots}}" 
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(0, 0, 0)">
+      <block wx:for="{{array}}" wx:key="text">
+          <swiper-item>
+                <view class="section_gap" catchtap="ee" wx:for="{{item}}" wx:key="text" id="{{item.id}}">
+                    <image  src="{{item.src}}" style="height: 90rpx;"></image>
+                    <view class="flex-item">{{item.text}}</view>
+                </view>
+                     <!--<view class="clear"></view>-->
+                          
+            </swiper-item>
+                
+        </block>
+ 
+  </swiper>
+   
+
+    
+  <view class="hrr"></view>
+    <!--图书列表的模板-->
+        <view class="hot">热门图书top：</view>
+        <import src="../template/template"/>
+        <template is="book_list" data="{{books}}"></template>
+             <!--加载更多-->
+     <button type="default" size="{{defaultSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" catchtap="onloadmore" class="more" wx:if="{{no_more == false}}">点击加载更多</button>
+     <view wx:if="{{no_more}}" class="no_more">没有更多了..</view>
+        <!--加载过程中的加载符号-->
+        <view class="body-view">
+            <loading hidden="{{hidden}}" bindchange="loadingChange">
+                加载中...
+            </loading>
+        </view>
+   
+</view>
+   </scroll-view>
+</view>

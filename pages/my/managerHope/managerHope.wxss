@@ -1,0 +1,54 @@
+/* pages/my/managerHope/managerHope.wxss */
+/* pages/my/bookHopeMe/bookHopeMe.wxss */
+.container{
+  padding: 20rpx;
+}
+.bookHopeItem{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 34rpx;
+  color: #494949;
+  border-bottom:5rpx solid #494949;
+  padding:30rpx;
+
+}
+/*书愿单的详情  */
+.bookHope-Deatil{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 330rpx;
+  overflow: hidden;
+  /* text-overflow:clip; */
+}
+.bookHope-Deatil-left{
+  /* width: 40%; */
+  padding: 5rpx;
+}
+.bookHope-Deatil-left > image{
+  /* width: 100%; */
+  width:230rpx;
+  height:320rpx;
+  
+}
+.bookHope-Deatil-right{
+  padding-top: 10rpx;
+    /* overflow:hidden;
+    text-overflow:ellipsis; */
+}
+/* .container > view + view{
+ 
+} */
+.bookHope-Deatil-right > p{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 30rpx;
+  color: #657b83;
+  margin:15rpx 0 0 10rpx;
+}

@@ -1,0 +1,182 @@
+/* pages/logined/logined.wxss */
+
+/*登录整个板块*/
+.classname{
+    padding:35%;
+    padding-top:50%;
+}
+/*登录按钮*/
+.login{
+   display:inline-block;
+    background:#2aac5e;
+    padding:14rpx;
+    text-align:center;
+    margin:10rpx auto;
+    color:#fff;
+    font-size:26rpx;
+    padding-left:50rpx;
+    padding-right:50rpx;
+
+}
+/*登录按钮上面的文字*/
+.login_up{
+    text-align: center;
+    font-size: 26rpx;   
+    color: #000;
+}
+
+.user{
+    display: block;
+    background: #2aac5e;
+    padding: 20rpx;
+    /*margin: 20rpx;*/
+    text-align: center;
+    color:#fff;
+}
+.scanErweima{
+  border-radius: 10rpx;
+}
+
+
+/*设置整个页面的公共属性*/
+view{
+    font-size: 34rpx;
+    color:rgba(0,0,0,0.8);
+    line-height:45rpx;
+
+}
+
+/*借书单列表*/
+.buy_book{
+    display: flex;
+    flex-direction: row;
+    padding: 20rpx;
+    margin-top: 20rpx;
+}
+/*.no_book{
+      padding: 20rpx;
+    margin-top: 20rpx;
+}*/
+.bottom{
+     position: fixed;
+     bottom: 0;
+     right: 0;
+     width: 100%;
+}
+/*tab切换*/
+.swiper-tab{
+  width: 100%; 
+  border-bottom: 2rpx solid #777; 
+  text-align: center; 
+  line-height:50rpx;
+  padding-top:20rpx;
+
+}
+.swiper-tab-list{
+  font-size: 30rpx; 
+  display: inline-block; 
+  width: 20%; 
+  color: #777; 
+}
+.on{
+  color: #2aac5e; 
+  border-bottom: 5rpx solid #2aac5e;
+}
+.swiper-box{ 
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+ }
+/*.swiper-box view{ 
+  text-align: center; 
+}*/
+
+
+
+image{
+    width: 60%;
+}
+.classify_list{
+     display:flex;
+     flex-direction: row;
+     padding:22rpx;
+     position: relative;
+}
+/*标题要明显，其他不太明显*/
+.title{
+    font-size: 38rpx;
+    font-weight: 600;
+    color: rgb(0,0,0);
+
+}
+.small{
+    font-size: 30rpx;
+    color: rgb(0,0,0,0.8);
+}
+
+
+/*具体图书列表*/
+checkbox-group{
+    padding-top:110rpx;
+}
+
+.pic{
+    width: 30%;
+    display: inline-block;
+    margin-left:6rpx;
+}
+.pic image{
+    width: 100%;
+}
+.list_content{
+    width: 70%;
+    display: inline-block;
+    padding-top: 10rpx;
+    padding-left: 10rpx;
+    text-align: left;
+}
+.hr,.hrr{
+    height:2px;
+    width: 100%;
+    background-color: black;
+    border-top: white solid 1px ;
+    border-bottom: white solid 1px;
+    opacity:0.1;
+}
+.hrr{
+    height:10px;
+}
+.hot{
+   border-bottom:2rpx solid rgba(0, 0, 0, 0.1);
+    padding:14rpx;
+    color:rgba(0,0,0,0.6);
+    font-size:32rpx;
+}
+/*删除图标*/
+.delete{
+  position: absolute;
+ bottom:-10rpx;
+ right:40rpx;
+ padding: 10rpx;
+}
+/*生成预订借书二维码*/
+.order_btn{
+    margin: 0;
+    text-align: center;
+}
+
+/*什么也没有*/
+.none{
+    padding-top: 80rpx;
+}
+.none image{
+    display:block;
+    margin:0 auto;
+    width:30%;
+
+}
+.none view{
+    text-align: center;
+    color: #8a8a8a;
+}

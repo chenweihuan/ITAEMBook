@@ -1,0 +1,20 @@
+<!--pages/my/managerBook/managerBook.wxml-->
+<view wx:for="{{books}}">
+      <!--图书详情的头部-->
+    <view class="top">
+           <image src="{{item.book_image}}" mode="widthFix"></image>
+            <!--<image src="https://img3.doubanio.com/lpic/s1876251.jpg" mode="widthFix"></image>-->
+         <view class="top_right">
+            <text class="book_name">{{item.title}}\n</text>
+            <text>作者：{{item.author}}\n</text>
+            <text>索书号：{{item.index_number}}\n</text>
+            <text>出版社：{{item.press}}\n</text>
+             <text>馆藏地点：{{item.book_location}}\n</text>
+          
+        </view>
+    </view>
+</view>
+<view> 需交押金：<text style="color:red;font-size:40rpx;">{{money}}</text></view>
+
+     <view class="bottom" catchtap="sure_borrow" wx:if="{{lendORborrow == 0}}">图书无误，确认借出</view>
+  <view class="bottom" catchtap="return_borrow" wx:if="{{lendORborrow == 1}}">确定归还图书</view>

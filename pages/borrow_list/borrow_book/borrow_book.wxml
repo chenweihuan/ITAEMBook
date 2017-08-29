@@ -1,0 +1,110 @@
+<!--pages/logined/logined.wxml-->
+<!--用户没有登录的显示页面-->
+<view class="classname"  style="display:{{display}}">
+    <text class="login_up">登录后查看借书单</text>
+    <view class="login" catchtap="Login">       
+        点击登录
+    </view>
+</view>
+
+<!--用户已经登录的页面-->
+<view class="borrow_list" style="display:{{display_book}}">
+
+   <view class="user scanErweima" catchtap="scan_erweima" style="margin:10rpx">扫二维码加入借书单</view>
+
+    <!--tab切换-->
+    <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">借书单</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">预约单</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">待借图书</view>
+     <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">未还图书</view>
+    <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">已还图书</view>
+    </view>
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight*3}}px" bindchange="bindChange" >
+    <swiper-item>
+        <view>
+            <!--借书单详情-->
+       <view wx:if="{{borrow_list == false}}" class="none">
+            <image src="https://www.aloneness.cn/images/libraryImages/img1.png" mode="widthFix"></image>
+            <view>什么也没有啦啦！</view>
+
+            <!--测试  -->
+              <scroll-view scroll-y style="height: 200px;"
+               bindscrolltoupper="upper" bindscrolltolower="lower"
+                bindscroll="scroll" scroll-into-view="{{toView}}"
+                 scroll-top="{{scrollTop}}">
+                <view id="green" class="scroll-view-item bc_green"></view>
+                <view id="red"  class="scroll-view-item bc_red"></view>
+                <view id="yellow" class="scroll-view-item bc_yellow"></view>
+                <view id="blue" class="scroll-view-item bc_blue"></view>
+              </scroll-view>
+
+       </view>
+        <import src="../../template/template"/>
+        <template is="borrow_list" data="{{borrow_list}}"></template>
+           <!--失效的宝贝-->
+          <text style="display:{{dis_wuyong}}">失效的宝贝：</text> 
+         <import src="../../template/template"/>
+        <template is="borrow_list_two" data="{{borrow_list}}"></template>
+        </view>
+    </swiper-item>
+    <swiper-item>
+    <view>
+          <!--预订单详情-->
+          <view wx:if="{{tomorrow_list == false}}" class="none">
+            <image src="https://www.aloneness.cn/images/libraryImages/img1.png" mode="widthFix"></image>
+            <view>什么也没有啦啦！</view>
+       </view>
+            <block wx:for="{{tomorrow_list}}" wx:key="title">
+         <import src="../../template/template"/>
+        <template is="tomorrow_list" data="{{item}}"></template>
+               </block>
+        
+    </view>
+    </swiper-item>
+    <swiper-item>
+    <view>
+         <!--待借单详情-->
+                <view wx:if="{{out_list == false}}" class="none">
+            <image src="https://www.aloneness.cn/images/libraryImages/img1.png" mode="widthFix"></image>
+            <view>什么也没有啦啦！</view>
+       </view>
+               <block wx:for="{{out_list}}" wx:key="title">
+         <import src="../../template/template"/>
+        <template is="out_list" data="{{item}}"></template>
+               </block>
+            
+    </view>
+    </swiper-item>
+     <swiper-item>
+    <view> 
+    <!--未还详情-->
+      <view wx:if="{{no_list == false}}" class="none">
+            <image src="https://www.aloneness.cn/images/libraryImages/img1.png" mode="widthFix"></image>
+            <view>什么也没有啦啦！</view>
+       </view>
+        <block wx:for="{{no_list}}" wx:key="title">
+         <import src="../../template/template"/>
+        <template is="no_list" data="{{item}}"></template>
+               </block>
+            </view>
+
+    </swiper-item>
+     <swiper-item>
+    <view>     
+       <!--已还书本详情-->
+         <view wx:if="{{return_list == false}}" class="none">
+            <image src="https://www.aloneness.cn/images/libraryImages/img1.png" mode="widthFix"></image>
+            <view>什么也没有啦啦！</view>
+       </view>
+         <block wx:for="{{return_list}}" wx:key="title">
+         <import src="../../template/template"/>
+        <template is="no_list" data="{{item}}"></template>
+               </block>
+        
+      </view>
+        
+    </swiper-item>
+    </swiper>
+        <view wx:if="{{btn_disolay}}" class="user bottom" catchtap="sure_borrow">确定借书</view>
+</view>

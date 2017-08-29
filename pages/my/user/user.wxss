@@ -1,0 +1,80 @@
+/* pages/user/user.wxss */
+/*欢迎您*/
+.top_top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.top_top_welcome{
+    text-decoration: underline;
+}
+
+/*整体容器*/
+.container{
+    padding:30rpx;
+}
+.classname{
+    padding-left: 30rpx;
+}
+
+.erweima_text,.btn_two_text,.top_text{
+    margin-top:20rpx;
+}
+.top_text{
+      text-indent:2em;
+}
+.erweima_text,.btn_two_text{
+   margin-bottom:10rpx;
+    font-size:36rpx;
+    color:#666;
+    margin-top:30rpx;
+}
+
+/*添加登录*/
+.input_username{
+    padding:30rpx;
+    border-bottom:1rpx solid #999;
+    margin-top:10rpx;
+}
+
+/*表格*/
+.table { 
+     border: 0px solid darkgray;
+}
+.tr {  
+    display: flex; 
+     width: 100%;  
+     justify-content: center;  
+     height: 3rem; 
+     align-items: center;
+}
+.td {   
+     width:40%;    
+     justify-content: center;  
+       text-align: center;
+}
+.table .bg-w{  
+    background: #2aac5e;
+}
+.bg-g{  
+    background: #9FC198;
+}
+.th {  
+    width: 40%;  
+    justify-content: center; 
+    background: #2aac5e;  
+    color: #fff; 
+    display: flex; 
+    height: 3rem; 
+    align-items: center;
+}
+
+.user{
+  display:block;
+    background:#2aac5e;
+    margin:20rpx auto;
+    text-align:center;
+    border-radius:10rpx;
+    width:90%;
+    line-height:90rpx;
+}

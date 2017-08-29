@@ -1,0 +1,52 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/login/login",
+    "pages/borrow_list/borrow_book/borrow_book",
+    "pages/borrow_list/noLoad/noLoad",
+     "pages/my/user_manager/user_manager",
+     "pages/my/user/user",
+     "pages/my/manager/manager",
+     "pages/my/managerBook/managerBook",
+     "pages/my/my_erweima/my_erweima",
+     "pages/my/read_day/read_day",
+      "pages/my/warn_book/warn_book",
+      "pages/bookHope/bookHope",
+      "pages/my/contentMe/contentMe",
+      "pages/my/summaryMe/summaryMe",
+      "pages/my/bookHopeMe/bookHopeMe",
+      "pages/my/managerHope/managerHope",
+      "pages/my/wantLook/wantLook"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#2aac5e",
+    "navigationBarTitleText": "ITAEMBook",
+    "navigationBarTextStyle":"#F5F5F5",
+    "enablePullDownRefresh":true,
+    "backgroundTextStyle":"dark"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#2aac5e",
+    "borderStyle": "#F5F5F5",
+    "backgroundColor": "#fff",
+    "list": [{
+      "pagePath": "pages/index/index",
+        "iconPath": "pages/img/书架11.png",
+        "selectedIconPath": "pages/img/书架1.png",
+      "text": "书架"
+    }, {
+      "pagePath": "pages/borrow_list/borrow_book/borrow_book",
+      "iconPath": "pages/img/图书11.png",
+      "selectedIconPath": "pages/img/图书1.png",
+      "text": "借书单"
+    }, {
+      "pagePath": "pages/my/user_manager/user_manager",
+       "iconPath": "pages/img/我1.png",
+      "selectedIconPath": "pages/img/我11.png",
+      "text": "我的"
+    }]
+  }
+}
