@@ -57,7 +57,7 @@ view .choose_bottom_top{
 .top{
     display: flex;
     flex-direction: row;
-    padding:10rpx;
+    padding:10rpx 10rpx 30rpx;
  
 }
 .book_name{
@@ -70,7 +70,35 @@ view .choose_bottom_top{
     padding-top:40rpx;
     width: 150%;
 }
-
+/*商家报价  */
+.priceToOther{
+  padding-left: 30rpx;
+  font-size: 32rpx;
+}
+.priceToOther-Item{
+  display: flex;
+  flex-wrap:wrap;
+  flex-direction: row;
+}
+.priceToOther-Name{
+    color: #333;
+    padding-left: 20rpx;
+}
+.priceToOther-Item > view{
+  padding: 10rpx;
+  width: 50%;
+  box-sizing: border-box;
+  color: #333;
+}
+.priceToOther-Item > view  text{
+    color: #f33;
+}
+.priceToOther-Item > view image{
+    width: 40rpx;
+    height: 40rpx;
+    position: relative;
+    top: 10rpx;
+}
 /*表格*/
 .table { 
      border: 0px solid darkgray;
@@ -294,8 +322,6 @@ button{
 }
 
 /*五星评价  */
-
-
   .starability-basic {
       display:block;
       position:relative;
@@ -304,7 +330,6 @@ button{
       padding:0;
       border:none;
       margin:10rpx auto;
-
 }
 .starability-basic>input {
 	position: absolute;
@@ -329,6 +354,36 @@ button{
   .on{
   	background-position: 0 -30px
 }
+
+    /*小星星  */
+.starability-basic-small {
+      display:block;
+      position:relative;
+      width:220px;
+      padding:0;
+      border:none;
+}
+
+.starability-basic-small>view {
+	position: relative;
+	display: inline-block;
+	float: left;
+	width: 15px;
+	height: 15px;
+	color: transparent;
+	cursor: pointer;
+	background-repeat: no-repeat;
+  margin-left:4rpx;
+}
+.starability-basic-small > view {
+		background-image: url("http://119.29.194.197/love/a/start.png");
+		background-size: 15px auto;
+	}
+  .onSmall{
+  	background-position: 0 -15px
+}
+
+/*  */
 /*我还想说  */
 .inputContent > textarea{
    background-color: #ddd;
@@ -346,6 +401,19 @@ button{
   margin-top:20rpx;
 }
 /*书评列表  */
+
+.contentItem > view:first-child{
+  display: flex;
+  flex-direction: row;
+}
+.contentItem{
+    border-bottom:4rpx solid #ddd;
+    padding-bottom:14rpx;
+    padding-top:14rpx;
+}
+view > .contentItem:last-child{
+  margin-bottom: 250rpx;
+}
 .zan > image{
   width: 40rpx;
   height: 36rpx;

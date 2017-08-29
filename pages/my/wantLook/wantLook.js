@@ -67,7 +67,7 @@ Page({
     var that = this;
     var phone = wx.getStorageSync("phone");
     wx.request({
-      url: 'http://192.168.2.159/library_5/bookForMe  ', 
+      url: 'http://192.168.2.159/library_5/bookForMe', 
       data: {
         phone:phone
       },

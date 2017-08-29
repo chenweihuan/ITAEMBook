@@ -1,11 +1,13 @@
 /* pages/my/read_day/read_day.wxss */
 page{
     height: 100%;
-   
+    background:#f7f7f7;
+    color:#8d8d8d;
+    /* background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%); */
 }
-.container{
+/* .container{
     height: 100%;
-}
+} */
 .top_top{
     display: flex;
     flex-direction: row;
@@ -16,39 +18,40 @@ page{
 }
 .buttom{
     position: relative;
-    height: 100%;
+
 }
 .buttom_one{
     position:absolute;
     top: 0;
     left: 0;
-    height: 90%;
+    /* height: 90%; */
     width: 100%;
     background-color: rgba(0, 0, 0,0.9);
     
 }
-.buttom_two{
+/* .buttom_two{
     position:absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color:#EEE;
-} 
-.is_exise{
+}  */
+/* .is_exise{
     z-index: 1001;
 }
 .no_exise{
     z-index: 1000;
-}
+} */
 /*头部*/
 .top{
     display: flex;
     flex-direction: row;
     padding:10rpx;
+    margin-top:20rpx;
 }
 .book_name{
-    color: #000;
+    color: #333;
     font-size:38rpx;
     text-align: center;
 }
@@ -61,4 +64,13 @@ page{
     display: inline-block;
     font-size: 30rpx;
     margin-top: 20rpx;
+}
+.introduction_top{
+  text-align: center;
+  margin:15px 0 10rpx 0;
+  font-size:30rpx;
+}
+.introduction{
+  text-indent: 2rem;
+  font-size:32rpx;
 }

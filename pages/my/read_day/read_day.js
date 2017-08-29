@@ -32,7 +32,6 @@ Page({
   // 读者是否关闭推荐阅读
   switchChange:function(e){
     console.log(e);
-    
     wx.setStorageSync('is_exise', !e.detail.value)
     var is_exise = wx.getStorageSync('is_exise'); 
     this.setData({is_exise:is_exise});
@@ -45,14 +44,28 @@ Page({
     var that = this;
     var phone= wx.getStorageSync('phone');
     var data = {phone:phone};
-    var Url ='http://192.168.2.159/library_5/recommenBook?phone='+phone;//搜索的url
-        bookUtil.GetData(Url, data, function (res) {
-              console.log(res.data);
-               that.setData({read_day:res.data});
-        }, function (res) {
-        },
-        function (res) {
-        })
+    console.log(phone);
+    wx.request({
+      url: 'http://192.168.2.159/library_5/recommenBook?phone='+phone,
+      data: {
+          phone:phone
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({ read_day: res.data });
+      }
+    })
+    // var Url ='http://192.168.2.159/library_5/recommenBook?phone='+phone;//搜索的url
+    //     bookUtil.GetData(Url, data, function (res) {
+    //           console.log(res.data);
+    //            that.setData({read_day:res.data});
+    //     }, function (res) {
+    //     },
+    //     function (res) {
+    //     })
    
   },
    detail:function(e){

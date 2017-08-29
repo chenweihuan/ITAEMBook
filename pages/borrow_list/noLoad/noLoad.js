@@ -18,7 +18,8 @@ Page({
     // var initUrl = this.data.placeholder;
     var time = Date.now();//获取当前时间
     var order_id= wx.getStorageSync('order_id');
-    var initUrl = "#"+order_id+"&"+ time+'%';
+    var lendORborrow = wx.getStorageSync("lendORborrow");
+    var initUrl = "#" + order_id + "&" + time + '%' + lendORborrow;
     this.createQrCode(initUrl,"mycanvas",size.w,size.h);
     //验证码倒计时
       var total_micro_second = 60 * 1000;

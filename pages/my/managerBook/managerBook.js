@@ -5,11 +5,15 @@ Page({
      unique_book_id1:"",
      unique_book_id2:"",
      phone:"",//电话号码
-     money:""
+     money:"",
+     lendORborrow:'',//判断借书还是还书
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     this.Loadbook();
+    this.setData({
+      lendORborrow: wx.getStorageSync("lendORborrow")
+    })
     // this.sure_borrow();
   },
   onReady:function(){

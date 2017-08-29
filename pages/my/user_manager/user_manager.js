@@ -78,8 +78,9 @@ Page({
       })
     })
   },
-  // 获取我的借书二维码
+  // 获取我的还书二维码
   my_erweima:function(){
+    wx.setStorageSync("lendORborrow", "1");//还书的时候lendORborrow为1
           wx.navigateTo({//跳转到我的二维码页
                         url: '../my_erweima/my_erweima'
                     })

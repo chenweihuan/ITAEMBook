@@ -115,12 +115,14 @@ Page({
     erweima:function(){
               wx.scanCode({
           success: (res) => {
-      //  #1493729791828&1493729797600%
+      //  #1493729791828&1493729797600%0
           var managerBook = res.result;
           var r = managerBook.replace(/(#.*?&)/g,'');//匹配order_id
            var time = r.replace(/(%.*?)/g,'')//获取二维码里面的时间
            var a = managerBook.replace(/(&.*?%)/g,'');
            var order_id = a.replace(/(#)/g,'');//匹配order_id
+           var lendORborrow = managerBook.replace(/(#.*?%)/g, '');//匹配借书还是还书
+           wx.setStorageSync("lendORborrow", lendORborrow);
 
            wx.setStorageSync('order_id',order_id);//缓存管理员验书的所需的order_id
 

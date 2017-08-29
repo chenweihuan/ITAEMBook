@@ -10,8 +10,29 @@
             <text>出版社：{{book_detail.press}}\n</text>
              <text wx:if="{{dis_unique_book_id == true}}">馆藏地点：{{book_detail.book_location}}\n</text>
             <text>押金：{{book_detail.price}}</text>
+
+          
         </view>
     </view>
+        <view class="priceToOther">
+              <view class="priceToOther-Name">商家报价：（单击价格复制图书链接）</view>
+              <view class="priceToOther-Item">
+                  <view bindtap="setClipboardData">
+                    <image src="../img/JD.png"></image>
+                   京东
+                    <text>￥2698</text>
+                   </view>
+                    <view>  <image src="../img/DD.png"></image>
+                    当当网  <text>￥2698</text>
+                    </view> 
+                  <view> <image src="../img/1store.png"></image>
+                  1号店  <text>￥2698</text>
+                  </view>
+                    <view> <image src="../img/timg.jpg"></image>
+                    中国图书网  <text>￥2698</text>
+                    </view>
+              </view>
+            </view>
       <!--图书表格-->
 <view class="table" wx:if="{{dis_unique_book_id == false}}"> 
         <view class="tr bg-w">   
@@ -57,8 +78,19 @@
         </view>
         <!-- 书评 -->
         <view class="{{currentTab==1 ? 'show' : 'hide'}}">
+
           <view class="contentItem" wx:for="{{contentItem.bookreviews}}" wx:key="{{contentItem.bookreviews}}">
-                 <view>{{item.name}}</view>
+                 <view>
+                 <view> {{item.name}}：</view>
+                 <!--小星星  -->
+                <view class="starability-basic-small">
+                    <view  class="{{item.score >= 1 ? 'onSmall':' '}} " bindtap="star" data-star="1">1 star</view>
+                    <view  class="{{item.score >= 2 ? 'onSmall':' '}} " bindtap="star" data-star="2">2 stars</view>
+                    <view  class="{{item.score >= 3 ? 'onSmall':' '}} " bindtap="star" data-star="3">3 stars</view>
+                    <view   class="{{item.score >= 4 ? 'onSmall':' '}} " bindtap="star" data-star="4">4 stars</view>
+                    <view   class="{{item.score >= 5 ? 'onSmall':' '}} " bindtap="star" data-star="5">5 stars</view>
+                </view>
+                 </view>
                  <view>{{item.content}}</view>
                 <view class="contentButtom">
                     <view >{{item.time}}</view>

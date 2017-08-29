@@ -48,10 +48,13 @@ Page({
     // console.log("显示页面");
     var phone = wx.getStorageSync("phone");
     this.setData({phone:phone});
+
     if (app.globalData.book_id && phone !== ""){//book_id和phone都存在的情况下
-      console.log("没登录的用户")
+      console.log("登录的用户")
       var bookId = app.globalData.book_id;
       var code = wx.getStorageSync("code");
+      console.log(bookId);
+      console.log(code);
       // console.log(code);
       wx.request({//让后台记录浏览信息
         url: 'http://192.168.2.159/library_5/browseBookDetail', 
@@ -352,8 +355,8 @@ Page({
   // 相关图书推荐
   introduction:function(){
     var that = this;
-    // console.log(that.data.book_detail.index_number);
-    // console.log(that.data.book_detail.book_id);
+    console.log(that.data.book_detail.index_number);
+    console.log(that.data.book_detail.book_id);
     var url = 'http://192.168.2.159/library_5/getSimilarBooks?index_number='+that.data.book_detail.index_number+'&book_id='+that.data.book_detail.book_id;
     // console.log(url);
     var code = wx.getStorageSync("code")
@@ -564,7 +567,7 @@ Page({
           'content-type': 'application/json'
         },
         success: function (res) {
-          console.log(res)
+          console.log(res);
           that.setData({contentItem:res.data})//更新所有评论
         }
       })
@@ -608,6 +611,19 @@ Page({
         } else if (res.cancel) {//用户取消添加
        
         }
+      }
+    })
+  },
+  // 设置粘贴版的内容
+  setClipboardData:function(e){
+    wx.setClipboardData({
+      data: '2222222',//设置粘贴版的内容
+      success: function (res) {
+          wx.showToast({
+            title: '成功复制链接',
+            icon: 'success',
+            duration: 3000
+          })
       }
     })
   }

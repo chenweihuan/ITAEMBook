@@ -1,4 +1,8 @@
 /* pages/my/summaryMe/summaryMe.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
 .container{
   width: 100%;
   height: 100%;
@@ -49,15 +53,22 @@ page,.page {
   height: 100%;
   position: fixed;
   width: 750rpx;
-  background-color: #ededed;
+   /* background-color: #ededed;  */
   z-index: 0;
   transition: All 0.4s ease; 
   -webkit-transition: All 0.4s ease;
+  /* background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-image: linear-gradient(to top, #43e97b 0%, #38f9d7 100%); */
+
+  background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+  /* background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%); */
 }
 .personalBook{
     display:flex;
     flex-direction:row;
-    justify-content:center;
+    justify-content:space-between;
     text-align:center;
     padding:20rpx;
     background-color:#fefaee;
@@ -70,11 +81,12 @@ page,.page {
     position:relative;
 }
 .bookIndex >image{
-    width:70%;
-    height:120%;
+    width:60rpx;
+    height:60rpx;
     position:absolute;
-    left:20rpx;
+    left:26rpx;
     top:-10rpx;
+
 }
 .bookName{
     width: 50%;
@@ -107,6 +119,24 @@ page,.page {
 }
 
 /*神评排行榜  */
+.contentIndex-Name,.ContentMe-center,.contentBottom-Item,.godStar{
+    display: flex;
+    flex-direction: row;
+    padding-top:24rpx;
+}
+.contentIndex-Name > view:first-child,
+.ContentMe-center > view:first-child,
+.contentBottom-Item > view:first-child,
+.godStar > view:first-child{
+    width: 170rpx;
+    text-align: right;
+    padding-right:10rpx;
+
+}
+.zanContentMe > view:last-child{
+  width: 70%;
+}
+
 .contentBottom{
     display:flex;
     flex-direction:row;
@@ -115,12 +145,231 @@ page,.page {
 }
 .contentNB{
   background-color: #fefaee;
+  margin:20rpx 15rpx;
+  font-size:32rpx;
+  color:#6a6352;
+  padding-bottom:20rpx;
+
 }
 .contentIndex{
-
+    color:#6a6352;
+    position: relative;
+    /* padding:10rpx 20rpx; */
 }
 .contentIndex >image{
   width: 50rpx;
   height: 50rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
 
+}
+.contentMe{
+    font-size:36rpx;
+    padding:25rpx 40rpx;
+}
+.contentBottom{
+
+}
+.fromZan{
+  padding-top: 24rpx;
+}
+.fromZan > text:first-child{
+  color: #fda446;
+  font-size:34rpx;
+
+}
+/*图书借阅排行榜  */
+.bookIndexAll{
+    width:20%;
+    color:#fe6424;
+    position:relative;
+}
+.bookIndexAll >image{
+    width:60rpx;
+    height:60rpx;
+    position:absolute;
+    left:20rpx;
+    top:-10rpx;
+}
+.bookNameAll{
+    width: 120%;
+    color: #fda446;
+    font-size: 26rpx;
+}
+.bookCountAll{
+    color: #fe6424;
+    margin-left:10rpx;
+}
+.personalBookAll{
+  margin: 15rpx;
+}
+
+/*首页  */
+.firstPage{
+  text-align: center;
+  color: #80551e;
+  height: 100%;
+}
+.firstPage > .top{
+  margin-top:50%;
+  text-align:left;
+  padding-left:40rpx;
+
+}
+.top > text:first-child{
+  font-size: 100rpx;
+  position: relative;
+  top: 10rpx;
+  text-align: left;
+  padding-left: 30rpx;
+}
+.top > text:last-child{
+    font-size:35rpx;
+    display:inline-block;
+    padding:14rpx;
+    border-radius:8rpx;
+    background-color:#80551e;
+    color:#e1dfe0;
+   margin-left:5rpx;
+
+
+}
+.firstPage > .middle  text{
+    display: inline-block;
+    font-size:70rpx;
+    background-color:#faeecd;
+    border-radius:10rpx;
+    padding:10rpx;
+    margin-top:20rpx;
+}
+.firstPage > .bottom{
+      font-size:20rpx;
+      margin-top:15rpx;
+      text-align: right;
+      padding-right: 30rpx;
+}
+
+/*各类图书统计扇形图  */
+.type-item{
+  display:block;
+  text-align:center;
+  background-color:#f9820c;
+  padding:20rpx;
+  width:44%;
+  color:#fff;
+  font-size:33rpx;
+  border-radius:30rpx;
+  margin:100rpx auto 20rpx;
+}
+canvas{
+  z-index:0;
+}
+/*我的神评  */
+.zanNum{
+  text-align: center;
+  color: #6a6352;
+}
+.zanNum > text{
+  font-size:200rpx;
+  color:#fe6424;
+}
+.zanContent{
+     color:#6a6352;
+     /* padding: 20rpx; */
+     font-size:32rpx;
+     margin:30rpx 0;
+}
+.zanIndex,.star,.zanContentMe,.zanBottom{
+    display: flex;
+    flex-direction: row;
+    padding-top:36rpx;
+}
+.zanIndex > view:first-child,
+.star > view:first-child,
+.zanContentMe > view:first-child,
+.zanBottom > view:first-child{
+    width: 170rpx;
+    text-align: right;
+    padding-right:10rpx;
+
+}
+.zanContentMe > view:last-child{
+  width: 70%;
+}
+/* .zanContentMe{
+    padding:20rpx 30rpx;
+} */
+.zanBottom{
+  font-size:30rpx;
+  text-align: right;
+}
+    /*小星星  */
+.starability-basic-small {
+      display:block;
+      position:relative;
+      padding:0;
+      border:none;
+}
+
+.starability-basic-small>view {
+	position: relative;
+	display: inline-block;
+	float: left;
+	width: 15px;
+	height: 15px;
+	color: transparent;
+	cursor: pointer;
+	background-repeat: no-repeat;
+  margin-left:4rpx;
+}
+.starability-basic-small > view {
+		background-image: url("http://119.29.194.197/love/a/start.png");
+		background-size: 15px auto;
+	}
+  .onSmall{
+  	background-position: 0 -15px
+}
+/*我的读书总量  */
+.booksNum-container{
+   color:#6a6352;
+   padding:50% 50rpx;
+}
+.booksNum{
+   color:#333;
+   font-size: 40rpx;
+   margin-bottom: 30rpx;
+  
+}
+.booksNum::before{
+    display: inline-block;
+    content: '';
+    background-color:#2aac5e;
+    width: 8rpx;
+    height: 32rpx;
+}
+.booksNum > text{
+  font-size: 80rpx;
+  color:#fe6424;
+}
+
+.pageNum,.pageTime,.text{
+   color:#6a6352;
+   font-size:30rpx;
+   padding-left: 20rpx;
+
+}
+.pageNum > text,.pageTime > text{
+  font-size: 40rpx;
+  color:#fe6424;
+}
+/*阅读借阅量统计  */
+.zhexian{
+  margin-top: 100rpx;
+}
+/*想读统计*/
+.booksWantNum-container{
+  text-align: right;
+  color:#6a6352;
+   padding:50% 50rpx;
 }

@@ -16,7 +16,5 @@
 </view>
 <view> 需交押金：<text style="color:red;font-size:40rpx;">{{money}}</text></view>
 
-     <view class="bottom" catchtap="sure_borrow">图书无误，确认借出</view>
-  <view class="bottom" catchtap="return_borrow">确定归还图书
-
-</view>
+     <view class="bottom" catchtap="sure_borrow" wx:if="{{lendORborrow == 0}}">图书无误，确认借出</view>
+  <view class="bottom" catchtap="return_borrow" wx:if="{{lendORborrow == 1}}">确定归还图书</view>

@@ -87,7 +87,7 @@ Page({
     console.log(e.target.dataset.bookname);
     if (!e.target.dataset.flag) {
       wx.showToast({
-        title: '此书暂无更多信息',
+        title: '暂无更多信息',
         image: '../../img/warn.png',
         duration: 2000
       })

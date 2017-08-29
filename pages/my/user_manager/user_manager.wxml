@@ -43,9 +43,9 @@
       我的书愿单
   </view>
   <!--我的评论  -->
-  <view class="down_list" catchtap="contentMe">
+  <!-- <view class="down_list" catchtap="contentMe">
       我写过的书评
-  </view>
+  </view> -->
      <!--还书提醒-->
   <view class="down_list" catchtap="warn_book">
       还书提醒
